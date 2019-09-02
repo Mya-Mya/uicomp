@@ -25,12 +25,13 @@ public:
 	inline void addActionListener(ActionListener *l);
 	inline void setPos(Vec2 pos, Part part)override;
 	inline void setSize(Vec2 size, Part part)override;
+	inline void setAlighment(int alighment);
 	void update();
 	void draw();
-	Text* getText();
-	Box* getNormalBox();
-	Box* getOnMouseBox();
-	Box* getPushingBox();
+	inline Text* getText();
+	inline Box* getNormalBox();
+	inline Box* getOnMouseBox();
+	inline Box* getPushingBox();
 };
 inline Button::Button()
 	:Button("uicomp::Button", 0)
@@ -76,4 +77,9 @@ inline void Button::setSize(Vec2 size, Part part)
 	for (UIComponent*c : myCompList) {
 		c->setSize(size, part);
 	}
+}
+
+inline void Button::setAlighment(int alighment)
+{
+	_text->setAlighment(alighment);
 }
