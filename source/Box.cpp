@@ -1,7 +1,9 @@
 #include "Box.h"
 #include"DxLib.h"
+#include"UICompConstants.h"
 Box::Box()
-	:Box(UICompTool::color(Blue), { 70,70 }, Center, {100,100})
+	:Box(UICompTool::color(UICompConstants::defaultBaseColor), 
+		UICompConstants::defaultPosition, UICompConstants::defaultPart,UICompConstants::defaultSize)
 {
 }
 

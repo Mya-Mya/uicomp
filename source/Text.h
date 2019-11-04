@@ -2,6 +2,7 @@
 #include"UIComponent.h"
 #include"UICompTool.h"
 #include<string>
+#include"UICompConstants.h"
 class Text :public UIComponent {
 protected:
 	std::string _text;
@@ -36,12 +37,12 @@ inline Text::Text()
 }
 
 inline Text::Text(std::string text, int font)
-	:Text(text,font,UICompTool::color(ColorName::Pink))
+	:Text(text,font,UICompTool::color(UICompConstants::defaultMainColor))
 {
 }
 
 inline Text::Text(std::string text, int font, int color)
-	:Text(text,font,color, { 70,70 }, Center, { 100,100 })
+	:Text(text,font,color, UICompConstants::defaultPosition, UICompConstants::defaultPart, UICompConstants::defaultSize)
 {
 }
 
@@ -112,12 +113,12 @@ inline void Text::updateTextX()
 		_textPos.setX(getPos(Part::BR).getX() - sx);
 		break;
 	case CENTER:
-		_textPos.setX(getPos(Part::Center).getX() - sx / 2);
+		_textPos.setX(getPos(Part::Center).getX() - sx *0.5);
 		break;
 	}
 }
 
 inline void Text::updateTextY()
 {
-	_textPos.setY(getPos(Part::Center).getY() - GetFontSizeToHandle(_font) / 2);
+	_textPos.setY(getPos(Part::Center).getY() - GetFontSizeToHandle(_font) *0.5);
 }

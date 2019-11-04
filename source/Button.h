@@ -6,6 +6,7 @@
 #include"Text.h"
 #include"Mouse.h"
 #include"Box.h"
+#include"UICompConstants.h"
 #include<list>
 class Button :public UIComponent {
 protected:
@@ -38,11 +39,15 @@ inline Button::Button()
 {
 }
 inline Button::Button(std::string text, int font)
-	: Button(text, font, UICompTool::color(ColorName::Green), UICompTool::color(ColorName::Green), UICompTool::color(ColorName::DarkGreen), UICompTool::color(ColorName::White))
+	: Button(text, font, 
+		UICompTool::color(UICompConstants::defaultBaseColor),
+		UICompTool::color(UICompConstants::defaultAccentColor), 
+		UICompTool::color(UICompConstants::defaultMainColor), 
+		UICompTool::color(UICompConstants::defaultMainColor))
 {
 }
 inline Button::Button(std::string text, int font, int bgNormalColor, int bgOnmouseColor, int bgClickingColor, int frColor)
-	: Button(text, font, bgNormalColor, bgOnmouseColor, bgClickingColor, frColor, { 70,70 }, Center, {100,100})
+	: Button(text, font, bgNormalColor, bgOnmouseColor, bgClickingColor, frColor, UICompConstants::defaultPosition, UICompConstants::defaultPart,UICompConstants::defaultSize)
 {
 }
 inline Button::Button(std::string text, int font, int bgNormalColor, int bgOnmouseColor, int bgClickingColor, int frColor, Vec2 pos, Part part, Vec2 size)

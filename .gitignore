@@ -1,0 +1,15 @@
+
+*.tlog
+.vs/1104修正/v15/.suo
+.vs/1104/v15/.suo
+*.db
+*.opendb
+*.ipch
+*.sln
+*.vcxproj
+*.filters
+*.user
+*.obj
+*.log
+*.idb
+*.pdb

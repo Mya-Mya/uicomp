@@ -1,6 +1,7 @@
 #pragma once
 #include"Vec2.h"
 #include"Part.h"
+#include"UICompConstants.h"
 class UIComponent {
 private:
 	Vec2 _halfSize;
@@ -22,7 +23,7 @@ public:
 };
 
 UIComponent::UIComponent() 
-	:UIComponent({ 60,30 }, Part::Center, {100,40})
+	:UIComponent(UICompConstants::defaultPosition, UICompConstants::defaultPart,UICompConstants::defaultSize)
 {
 }
 
@@ -104,35 +105,35 @@ Vec2 UIComponent::getPos(Part part) {
 
 void UIComponent::setSize(Vec2 newSize, Part part) {
 	if (_size == newSize)return;
-	_halfSize = newSize / 2;
+	_halfSize = newSize *0.5;
 	//_sizeは古いサイズと認識するべし
 	switch (part)
 	{
 	case TL:
-		_centerPos += (newSize - _size) / 2;
+		_centerPos += (newSize - _size) *0.5;
 		break;
 	case _2:
 		_centerPos.move(0, (newSize.getY() - _size.getY())/2);
 		break;
 	case _3:
-		_centerPos.move((_size.getX() - newSize.getX()) / 2, (newSize.getY() - _size.getY()) / 2);
+		_centerPos.move((_size.getX() - newSize.getX()) *0.5, (newSize.getY() - _size.getY()) *0.5);
 		break;
 	case _4:
-		_centerPos.move((newSize.getX() - _size.getX()) / 2, 0);
+		_centerPos.move((newSize.getX() - _size.getX()) *0.5, 0);
 		break;
 	case Center:
 		break;
 	case _6:
-		_centerPos.move((_size.getX()- newSize.getX()) / 2, 0);
+		_centerPos.move((_size.getX()- newSize.getX()) *0.5, 0);
 		break;
 	case _7:
-		_centerPos.move((newSize.getX() - _size.getX()) / 2, (_size.getY() - newSize.getY()) / 2);
+		_centerPos.move((newSize.getX() - _size.getX()) *0.5, (_size.getY() - newSize.getY()) *0.5);
 		break;
 	case _8:
-		_centerPos.move(0, (_size.getY() - newSize.getY()) / 2);
+		_centerPos.move(0, (_size.getY() - newSize.getY()) *0.5);
 		break;
 	case BR:
-		_centerPos-= (newSize - _size) / 2;
+		_centerPos-= (newSize - _size) *0.5;
 		break;
 	}
 	_size = newSize;

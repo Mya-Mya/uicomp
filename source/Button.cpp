@@ -2,7 +2,7 @@
 
 void Button::update()
 {
-	static Mouse*inst = Mouse::Instance();
+	static Mouse*inst = Mouse::inst();
 	int pressingCnt = inst->GetPressingCount(Mouse::LEFT);
 	int releasingCnt = inst->GetReleasingCount(Mouse::LEFT);
 	

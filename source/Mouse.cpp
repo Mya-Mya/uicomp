@@ -8,6 +8,14 @@ Mouse::Mouse() :
 	memset(mKeyReleasingCount, 0, sizeof(mKeyReleasingCount));
 }
 
+Mouse * Mouse::inst()
+{
+	if (instance == nullptr) {
+		instance = new Mouse();
+	}
+	return instance;
+}
+
 //更新
 bool Mouse::Update() {
 	int nowInput = GetMouseInput();      //今のキーの入力状態を取得
